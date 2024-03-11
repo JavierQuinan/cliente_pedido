@@ -12,12 +12,12 @@ export class PedidoService {
   }
 
   uno(id: string) {
-    return this.pedidos.find((pedido) => pedido.id === id);
+    return this.pedidos.find((pedido) => pedido.id_pedido === id);
   }
 
   insertar(pedidoDTO: PedidoDTO) {
     const nuevoPedido: IPedido = {
-        id: uuidV4(),
+        id_pedido: uuidV4(),
         ...pedidoDTO,
     };
     this.pedidos.push(nuevoPedido);
@@ -25,7 +25,7 @@ export class PedidoService {
   }
 
   actualizar(id: string, pedidoActualizar: PedidoDTO) {
-    const index = this.pedidos.findIndex((pedido) => pedido.id === id);
+    const index = this.pedidos.findIndex((pedido) => pedido.id_pedido === id);
     if (index !== -1) {
       const pedidoActualizado = { ...this.pedidos[index], ...pedidoActualizar };
       this.pedidos[index] = pedidoActualizado;
@@ -36,7 +36,7 @@ export class PedidoService {
   }
 
   eliminar(id: string) {
-    const pedidoIndex = this.pedidos.findIndex((pedido) => pedido.id === id);
+    const pedidoIndex = this.pedidos.findIndex((pedido) => pedido.id_pedido === id);
     if (pedidoIndex !== -1) {
       this.pedidos.splice(pedidoIndex, 1);
       return 'Pedido Eliminado';
