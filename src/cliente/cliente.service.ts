@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { ICliente } from './cliente.interfaces';
 import { v4 as uuidV4 } from 'uuid';
 import { ClienteDTO } from './cliente.dto';
-
+import { IPedido } from 'src/pedido/pedido.interfaces';
+import { PedidoService } from 'src/pedido/pedido.service';
 @Injectable()
 export class ClienteService {
-  clientes: ICliente[] = [];
 
   todos() {
     return this.clientes;
@@ -50,5 +50,10 @@ export class ClienteService {
     } else {
       throw new Error('Cliente no encontrado');
     }
+  }
+
+  async findAllPedidosByClienteId(clienteId: string): Promise<IPedido[]> {
+    // Llama al método findAll del servicio de Pedido pasando el clienteId
+    return await this.pedidoService.findAll({ clienteId });
   }
 }
