@@ -5,6 +5,7 @@ import { PedidoDTO } from './pedido.dto';
 
 @Injectable()
 export class PedidoService {
+  [x: string]: any;
   pedidos: IPedido[] = [];
 
   todos() {

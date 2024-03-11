@@ -4,8 +4,12 @@ import { v4 as uuidV4 } from 'uuid';
 import { ClienteDTO } from './cliente.dto';
 import { IPedido } from 'src/pedido/pedido.interfaces';
 import { PedidoService } from 'src/pedido/pedido.service';
+
 @Injectable()
 export class ClienteService {
+  [x: string]: any;
+  constructor(private readonly pedidoService: PedidoService) {} // Inyecta el servicio de Pedido
+  clientes: ICliente[] = [];
 
   todos() {
     return this.clientes;
