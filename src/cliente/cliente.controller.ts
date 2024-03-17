@@ -8,12 +8,16 @@ import {
     Put,
   } from '@nestjs/common';
   import { ClienteService } from './cliente.service';
-  import { ClienteDTO } from './cliente.dto'; 
+  import { ClienteDTO } from './dto/cliente.dto'; 
   
-  @Controller('cliente')
+  @Controller('api/v2/cliente')
   export class ClienteController {
     constructor(private clienteServicio: ClienteService) {}
-  
+    
+    @Post()
+    insertar(@Body() clienteDTO: ClienteDTO) { 
+      return this.clienteServicio.insertar(clienteDTO);
+    }
     @Get()
     todos() {
       return this.clienteServicio.todos();
@@ -24,14 +28,9 @@ import {
       return this.clienteServicio.uno(id);
     }
   
-    @Post()
-    insertar(@Body() cliente: ClienteDTO) { 
-      return this.clienteServicio.insertar(cliente);
-    }
-  
     @Put(':id')
-    actualizar(@Param('id') id: string, @Body() cliente: ClienteDTO) { 
-      return this.clienteServicio.actualizar(id, cliente);
+    actualizar(@Param('id') id: string, @Body() clienteDTO: ClienteDTO) { 
+      return this.clienteServicio.actualizar(id, clienteDTO);
     }
   
     @Delete(':id')

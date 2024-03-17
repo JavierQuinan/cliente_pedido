@@ -1,6 +1,6 @@
-export interface ICliente {
+export interface ICliente extends Document{
     id: string;
-    nombres: string;
+    nombre: string;
     email: string;
     Telefono: number;
     direccion: string;
