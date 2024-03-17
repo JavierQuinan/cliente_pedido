@@ -8,7 +8,7 @@ import {
     Put,
   } from '@nestjs/common';
   import { PedidoService } from './pedido.service';
-  import { PedidoDTO } from './pedido.dto'; 
+  import { PedidoDTO } from './dto/pedido.dto'; 
   
   @Controller('pedido')
   export class PedidoController {

@@ -12,29 +12,29 @@ import {
   
   @Controller('api/v2/cliente')
   export class ClienteController {
-    constructor(private clienteServicio: ClienteService) {}
+    constructor(private clienteService: ClienteService) {}
     
     @Post()
     insertar(@Body() clienteDTO: ClienteDTO) { 
-      return this.clienteServicio.insertar(clienteDTO);
+      return this.clienteService.insertar(clienteDTO);
     }
     @Get()
     todos() {
-      return this.clienteServicio.todos();
+      return this.clienteService.todos();
     }
   
     @Get(':id')
     uno(@Param('id') id: string) {
-      return this.clienteServicio.uno(id);
+      return this.clienteService.uno(id);
     }
   
     @Put(':id')
     actualizar(@Param('id') id: string, @Body() clienteDTO: ClienteDTO) { 
-      return this.clienteServicio.actualizar(id, clienteDTO);
+      return this.clienteService.actualizar(id, clienteDTO);
     }
   
     @Delete(':id')
     eliminar(@Param('id') id: string) {
-      return this.clienteServicio.eliminar(id);
+      return this.clienteService.eliminar(id);
     }
   }

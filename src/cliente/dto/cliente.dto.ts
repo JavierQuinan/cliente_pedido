@@ -2,7 +2,7 @@ import {
     IsNotEmpty,
     IsNumber,
     IsString,
-    IsEmail, // Agregado para validar el formato de correo electrónico
+    IsEmail, 
   } from 'class-validator';
   
   export class ClienteDTO {
@@ -15,11 +15,11 @@ import {
     nombre: string;
   
     @IsNotEmpty({ message: 'El campo es requerido' })
-    @IsEmail({}, { message: 'Formato de correo electrónico inválido' }) // Validación del formato de correo electrónico
+    @IsEmail({}, { message: 'Formato de correo electrónico inválido' }) 
     email: string;
   
     @IsNotEmpty({ message: 'El campo es requerido' })
-    @IsNumber({}, { message: 'Se necesita un número' }) // Se ajustó para validar como número en lugar de string
+    @IsNumber({}, { message: 'Se necesita un número' }) 
     telefono: number;
   
     @IsNotEmpty({ message: 'El campo es requerido' })
